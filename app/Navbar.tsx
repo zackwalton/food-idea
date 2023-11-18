@@ -16,7 +16,7 @@ export default function Navbar() {
                     priority
                 />
             </Link>
-            <nav className="flex items-center ml-auto gap-8 text-white text-sm">
+            <nav className="flex items-center ml-auto gap-8 text-black text-sm">
                 <Link href={"/swipe"}
                       className={"flex gap-1.5 items-center font-semibold rounded-sm transition text-lg"}>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">

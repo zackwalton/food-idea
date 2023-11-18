@@ -17,7 +17,7 @@ export default function RootLayout({ children, }: {
     return (
         <AuthProvider>
             <html lang="en">
-            <body className={inter.className + " text-white bg-pink-950"}>
+            <body className={inter.className + " text-black bg-blue-100"}>
             <Navbar />
             <div className={"flex flex-col items-center"}>
                 <div className={"w-[756px] h-full"}>{children}</div>
