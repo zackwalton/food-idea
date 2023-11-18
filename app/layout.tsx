@@ -19,7 +19,9 @@ export default function RootLayout({ children, }: {
             <html lang="en">
             <body className={inter.className + " min-h-screen text-white bg-gray-900"}>
             <Navbar />
-            {children}
+            <div className={"flex flex-col"}>
+                {children}
+            </div>
             </body>
             </html>
         </AuthProvider>
