@@ -1,7 +1,4 @@
 
-export default function Home() {
-  return (
-      <div className="flex flex-col items-center justify-center h-full">
-      </div>
-  )
+export default function Page() {
+    return <div className={"w-full h-[800px] bg-gray-700"}></div>
 }

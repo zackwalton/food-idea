@@ -17,10 +17,10 @@ export default function RootLayout({ children, }: {
     return (
         <AuthProvider>
             <html lang="en">
-            <body className={inter.className + " min-h-screen text-white bg-gray-900"}>
+            <body className={inter.className + " text-white bg-gray-900"}>
             <Navbar />
-            <div className={"flex flex-col"}>
-                {children}
+            <div className={"flex flex-col items-center"}>
+                <div className={"w-[756px] h-full"}>{children}</div>
             </div>
             </body>
             </html>
