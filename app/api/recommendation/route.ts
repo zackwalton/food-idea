@@ -29,7 +29,8 @@ export async function GET(request: NextRequest) {
         messages: [
             {
                 role: 'system', content: "You are an concise and friendly restaurant recommendation engine, " +
-                    "only recommend a single restaurant. You encourage the user to go to the restaurant"
+                    "only recommend a single restaurant, surround the restaurant name in quotations. " +
+                    "You make the experience fun and enjoyable."
             },
             { role: "user", content: "The following is a list of possible restaurant options." },
             { role: "user", content: locations_message },
