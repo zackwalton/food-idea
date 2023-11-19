@@ -7,7 +7,7 @@ export default async function Page() {
     const places_payload = {
         "includedTypes": ["restaurant"],
         "languageCode": "en",
-        "maxResultCount": 5,
+        "maxResultCount": 10,
         "locationRestriction": {
             "circle": {
                 "center": {
@@ -37,19 +37,7 @@ export default async function Page() {
 
     places = places['places']
 
-
-    for (let i = 0; i < places.length; i++) {
-        const photoName = places[i]['photos'][0]['name'];
-        const photoEndpoint = `https://places.googleapis.com/v1/${photoName}/media?key=${process.env.GOOGLE_MAPS_KEY}&maxWidthPx=400`
-        console.log(photoEndpoint);
-        const response = await fetch(photoEndpoint);
-        console.log('photoResource response');
-        console.log(response);
-        // places['photoUri'] = response['photoUri'];
-    }
-    console.log(places);
-
     return <div className={"w-full h-full"}>
-        <Swiper places={places}/>
+        <Swiper places={places} googleMapKey={google_maps_key}/>
     </div>
 }

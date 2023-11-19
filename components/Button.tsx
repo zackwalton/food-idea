@@ -5,7 +5,7 @@ interface Props {
 }
 
 export function ButtonGood(props: Props) {
-    return <button className={props.className} onClick={props.onClick}>
+    return <button className={props.className + ' transition ease-in-out delay-50 text-green-600 bg-green-50 border-2 border-green-600 p-2 rounded-full hover:bg-green-300'} onClick={props.onClick}>
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5}
              stroke="currentColor" className="w-6 h-6">
             <path strokeLinecap="round" strokeLinejoin="round"
@@ -15,7 +15,7 @@ export function ButtonGood(props: Props) {
 }
 
 export function ButtonBad(props: Props) {
-    return <button className={props.className} onClick={props.onClick}>
+    return <button className={props.className + ' transition ease-in-out delay-50 text-red-600 bg-red-50 border-2 border-red-600 p-2 rounded-full hover:bg-red-300'} onClick={props.onClick}>
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5}
              stroke="currentColor" className="w-6 h-6">
             <path strokeLinecap="round" strokeLinejoin="round"
