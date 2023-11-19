@@ -22,17 +22,19 @@ export default function Recommendation({ places, preferences }: Props) {
     if (error) return <div>Error!</div>
 
     return <div className={"flex justify-center"}>
-        <div className={"relative w-[400px] h-[500px] bg-white rounded-lg"}>
-            <p className={"text-2xl font-bold text-center p-3 m-2 border-black border-2 rounded-lg"}>Recommendation</p>
+        <div className={"relative w-[400px] h-[500px] bg-white rounded-lg p-3"}>
+            {!isLoading ? <p className={"text-4xl font-bold text-center p-3 m-2"}>
+                    <span className={"text-blue-400 font-bold"}>TasteMate</span>&apos;s recommendation</p>
+                : null}
             <div className={"flex flex-col items-center gap-6 text-center p-3 leading-7"}>
                 {isLoading ?
-                    <div className={"animate-bounce mt-14 text-xl"}><span className={"font-bold text-blue-300"}>
+                    <div className={"animate-bounce mt-14 text-xl"}><span className={"font-bold text-blue-400"}>
                         TasteMate AI</span> is thinking!
                     </div>
                     : data['choices'][0]['message']['content']}
                 {!isLoading ?
                     <Link href={`https://maps.google.com/?q=${data['choices'][0]['message']['content'].split('"')[1]}`}
-                          className={"flex flex-row justify-center align-middle gap-2 bg-blue-300 p-2 rounded-lg w-[200px] font-bold"}>
+                          className={"flex flex-row justify-center align-middle gap-2 bg-blue-300 hover:bg-blue-400 p-2 rounded-lg w-[200px] font-bold"}>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2}
                              stroke="currentColor" className="w-6 h-6">
                             <path strokeLinecap="round" strokeLinejoin="round"
@@ -41,7 +43,6 @@ export default function Recommendation({ places, preferences }: Props) {
                         Show me the way!
                     </Link> : null}
             </div>
-
         </div>
     </div>
 }

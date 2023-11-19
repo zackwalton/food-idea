@@ -7,8 +7,8 @@ import AuthProvider from "@/AuthProvider";
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-    title: 'Food Idea App',
-    description: 'A simple app to help you find food places to eat at.',
+    title: 'TasteMate AI',
+    description: 'TasteMate AI makes it easy to find the perfect restaurant for you!',
 }
 
 export default function RootLayout({ children, }: {

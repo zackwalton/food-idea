@@ -28,9 +28,8 @@ export async function GET(request: NextRequest) {
     const completion = await openai.chat.completions.create({
         messages: [
             {
-                role: 'system', content: "You are an concise and friendly restaurant recommendation engine, " +
-                    "only recommend a single restaurant, surround the restaurant name in quotations. " +
-                    "You make the experience fun and enjoyable."
+                role: 'system', content: "You are an funny and concise restaurant recommendation engine. " +
+                    "Only recommend a single restaurant, and say why you recommend it. You have to surround the restaurant name in quotations. "
             },
             { role: "user", content: "The following is a list of possible restaurant options." },
             { role: "user", content: locations_message },
