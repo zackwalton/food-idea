@@ -1,51 +1,36 @@
 'use client'
 import useSWR from "swr";
+import React from "react";
 
 interface Props {
     places: []
-    preferences: [string] | []
+    preferences: string[]
 }
 
-const fetcher = async (
-    url: string,
-    payload?: string,
-) => {
-    const options = {
-        method: payload ? "POST" : "GET",
-        ...(payload && {body: payload}),
-        headers: {
-            accept: "application/json",
-            "Content-Type": "application/json",
-        },
-    };
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
-    return fetch(url, options).then(r => r.json());
-
-};
-
-export default function Recommendation({places, preferences}: Props) {
-    let place_names: [string] | [] = []
+export default function Recommendation({ places, preferences }: Props) {
+    let place_names: string[] = []
     for (let i = 0; i < places.length; i++) {
         place_names.push(places[i]['displayName']['text'])
     }
 
-    const {data, isLoading, error} = useSWR(
-        [
-            `/api/recommendation`,
-            JSON.stringify({locations: place_names, preferences: preferences}),
-        ],
-        fetcher,
-        {
-        },
-    );
-
-    if (isLoading) return <div>Loading...</div>
-    if (error) return <div>{error.toString()}</div>
+    const { data, error, isLoading } = useSWR(
+        `/api/recommendation?locations=${JSON.stringify(place_names)}&preferences=${JSON.stringify(preferences)}`, fetcher)
     console.log(data);
 
+    if (error) return <div>Error!</div>
+
     return <div className={"flex justify-center"}>
-        <div className={"relative w-[400px] h-[600px] bg-white rounded-lg"}>
-            <p className={"text-2xl font-bold text-center p-5"}>Recommendation</p>
+        <div className={"relative w-[400px] h-[400px] bg-white rounded-lg"}>
+            <p className={"text-2xl font-bold text-center p-3 m-2 border-black border-2 rounded-lg"}>Recommendation</p>
+            <div className={"text-center p-3 leading-7 mt-14"}>
+                {isLoading ?
+                    <div className={"animate-bounce"}><span className={"font-bold text-blue-300"}>
+                        TasteMate AI</span> is thinking!
+                    </div>
+                    : data['choices'][0]['message']['content']}
+            </div>
         </div>
     </div>
 }
