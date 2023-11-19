@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
 import OpenAI from "openai";
-import { list } from "postcss";
 
 const openai = new OpenAI();
 
@@ -28,8 +27,10 @@ export async function GET(request: NextRequest) {
 
     const completion = await openai.chat.completions.create({
         messages: [
-            {role: 'system', content: "You are an concise and friendly restaurant recommendation engine, " +
-                    "only recommend a single restaurant. You encourage the user to go to the restaurant"},
+            {
+                role: 'system', content: "You are an concise and friendly restaurant recommendation engine, " +
+                    "only recommend a single restaurant. You encourage the user to go to the restaurant"
+            },
             { role: "user", content: "The following is a list of possible restaurant options." },
             { role: "user", content: locations_message },
             { role: "user", content: "The following is a list of preferences." },
